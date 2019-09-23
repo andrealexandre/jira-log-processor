@@ -11,5 +11,7 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '2.2.103' # SDK Version to use.
-    - name: 'try to build'
-      run: dotnet build
+    - name: 'Install Homebrew'
+      run: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    - name: 'Install Xamarin Studio Tool Runner'
+      run: brew install mdtool
