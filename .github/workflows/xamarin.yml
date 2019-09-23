@@ -7,10 +7,9 @@ jobs:
     runs-on: macOS-latest
     
     steps:
-    - name: 'Checkout latest from git'
-      uses: actions/checkout@v1
+    - uses: actions/checkout@v1
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '2.2.103' # SDK Version to use.
-    - name: 'dotnet help'
-      run: dotnet --help
+    - name: 'try to build'
+      run: dotnet build
