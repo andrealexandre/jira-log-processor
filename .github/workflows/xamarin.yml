@@ -12,4 +12,3 @@ jobs:
     # https://go.microsoft.com/fwlink/?linkid=871629
     - name: 'Select Xamarin SDK version'
       run: 'sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 5_4_1'
-      enabled: false
