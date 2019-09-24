@@ -17,5 +17,9 @@ jobs:
       run: |
         wget -q https://bosstoragemirror.blob.core.windows.net/wrench/jenkins/d15-9/62840955457733add681d6d929e5b618292e07df/43/package/xamarin.mac-5.2.1.9.pkg
         sudo installer -verbose -pkg xamarin.mac-5.2.1.9.pkg -target /
+    
+    - name: 'run mdtool'
+      run: mkbundle
+      
     - name: 'list'
       run: ls -l
