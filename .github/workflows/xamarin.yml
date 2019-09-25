@@ -19,7 +19,7 @@ jobs:
         sudo installer -verbose -pkg xamarin.mac-5.2.1.9.pkg -target /
     
     - name: 'run mdtool'
-      run: mkbundle
+      run: mkbundle -o 'LogWork Processor' --simple 'LogWork Processor.exe' --machine-config /etc/mono/4.5/machine.config
       
     - name: 'list'
       run: ls -l
