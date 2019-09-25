@@ -1,5 +1,0 @@
-language: csharp
-solution: LogWorkProcessor.sln
-os: osx
-mono:
-  - 5.20.1
