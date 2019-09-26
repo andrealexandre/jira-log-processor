@@ -41,4 +41,4 @@ function onStartup() {
 }
 
 ext.runtime.onMessage.addListener(onRequest);
-ext.runtime.onStartup.addListener(onStartup);
+window.addEventListener('load', onStartup);
