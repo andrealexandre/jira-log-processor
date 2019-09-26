@@ -26,9 +26,19 @@ var extractTags = () => {
 }
 
 function onRequest(request, sender, sendResponse) {
+  console.log(request.action)
   if (request.action === 'process-page') {
     sendResponse(extractTags())
   }
 }
 
+function onStartup() { 
+  console.log('onStartup')
+  let jiraIssueHeader = document.getElementById('jira-issue-header')
+  if(jiraIssueHeader) {
+    jiraIssueHeader.style.backgroundColor = 'red'
+  }
+}
+
 ext.runtime.onMessage.addListener(onRequest);
+ext.runtime.onStartup.addListener(onStartup);

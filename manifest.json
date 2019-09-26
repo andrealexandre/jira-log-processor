@@ -16,8 +16,8 @@
   "permissions": [
     "tabs",
     "storage",
-    "http://*/*",
-    "https://*/*"
+    "http://*.atlassian.net/browse/*",
+    "https://*.atlassian.net/browse/*"
   ],
   "options_ui": {
     "page": "options.html"
@@ -25,8 +25,8 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "http://*.atlassian.net/browse/*",
+        "https://*.atlassian.net/browse/*"
       ],
       "js": [
         "scripts/contentscript.js"
@@ -40,7 +40,7 @@
       "19": "icons/icon-19.png",
       "38": "icons/icon-38.png"
     },
-    "default_title": "Extension Boilerplate",
+    "default_title": "JIRA Log Processor",
     "default_popup": "popup.html"
   }
 }
