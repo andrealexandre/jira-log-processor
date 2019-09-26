@@ -8,11 +8,13 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    
+
     - uses: actions/setup-node@v1
       with:
         node-version: '8.0.0'
 
     - run: npm install
-
     - run: npm run build
+    - run: npm run dist
+    - name: List distributions
+      run: ls -l /dist
