@@ -16,8 +16,7 @@
   "permissions": [
     "tabs",
     "storage",
-    "http://*.atlassian.net/browse/*",
-    "https://*.atlassian.net/browse/*"
+    "*://*/browse/*"
   ],
   "options_ui": {
     "page": "options.html"
@@ -25,8 +24,7 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*.atlassian.net/browse/*",
-        "https://*.atlassian.net/browse/*"
+        "*://*/browse/*"
       ],
       "js": [
         "scripts/contentscript.js"
