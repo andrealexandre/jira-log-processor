@@ -1,5 +1,6 @@
 import ext from "./utils/ext";
 import storage from "./utils/storage";
+import $ from "jquery";
 
 var popup = document.getElementById("app");
 storage.get('color', function(resp) {
@@ -61,3 +62,30 @@ optionsLink.addEventListener("click", function(e) {
   e.preventDefault();
   ext.tabs.create({'url': ext.extension.getURL('options.html')});
 })
+
+function devLogAppend(message) {
+  const devLog = $('#dev-log')
+  devLog.append(`<p>${message}</p>`)
+}
+
+function logEvent(event) {
+  console.log(`${typeof event.target}.${event.type}:`)
+  console.log(event)
+}
+
+$('#csv-form').on('submit', (event) => {
+  event.preventDefault()
+  let file = event.target[0].files[0];
+  const fileReader = new FileReader();
+  fileReader.onloadstart = (e) => {
+    logEvent(e)
+  }
+  fileReader.onprogress = (e) => {
+    logEvent(e)
+  }
+  fileReader.onloadend = (e) => {
+    logEvent(e)
+    devLogAppend(e.target.result)
+  }
+  fileReader.readAsText(file);
+});
