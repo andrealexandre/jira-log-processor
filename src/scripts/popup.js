@@ -1,6 +1,7 @@
 import ext from "./utils/ext";
 import storage from "./utils/storage";
 import $ from "jquery";
+import Papa from "papaparse";
 
 var popup = document.getElementById("app");
 storage.get('color', function(resp) {
@@ -24,15 +25,15 @@ var template = (data) => {
   `);
 }
 var renderMessage = (message) => {
-  var displayContainer = document.getElementById("display-container");
-  displayContainer.innerHTML = `<p class='message'>${message}</p>`;
+  var displayContainer = $("#display-container");
+  displayContainer.html(`<p class='message'>${message}</p>`);
 }
 
 var renderBookmark = (data) => {
-  var displayContainer = document.getElementById("display-container")
+  var displayContainer = $("#display-container")
   if(data) {
     var tmpl = template(data);
-    displayContainer.innerHTML = tmpl;  
+    displayContainer.html(tmpl);
   } else {
     renderMessage("Sorry, could not extract this page's title and URL")
   }
@@ -76,16 +77,11 @@ function logEvent(event) {
 $('#csv-form').on('submit', (event) => {
   event.preventDefault()
   let file = event.target[0].files[0];
-  const fileReader = new FileReader();
-  fileReader.onloadstart = (e) => {
-    logEvent(e)
-  }
-  fileReader.onprogress = (e) => {
-    logEvent(e)
-  }
-  fileReader.onloadend = (e) => {
-    logEvent(e)
-    devLogAppend(e.target.result)
-  }
-  fileReader.readAsText(file);
+
+  Papa.parse(file, {
+    complete: (results) => {
+      results.data.forEach(elem => devLogAppend(elem))
+    }
+  })
+
 });
